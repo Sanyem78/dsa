@@ -1,12 +1,22 @@
+// Find the unique triplets in the given array whose sum is 0
+
 // input: [-1,0,1,2,-1,4]
+// output: [-1,-1,2], [-1,0,1]
+
+// Approach
+// Sort the array, and loop for the whole array 
+// skip the subsequent repeating elements
+// the logic is a+b+c = 0, b+c = -a
+// Now this is the two sum problem, calculate that b and c exist for each a.
+// In order to find unique just skip the subsequent element if it already exists
 
 // Time complexity : O(n^2)
-// Space complexity : O(k)
+// Space complexity : O(1)
 
 int[] arr = {-1,0,1,2,-1,4};
 List<List<int>> result = new List<List<int>>();
 arr.Sort();
-for(int i = 0; i < arr.Length; i++)
+for(int i = 0; i < arr.Length-2; i++)
 {
     if(i>0 && arr[i] == arr[i - 1])
     {
@@ -28,7 +38,7 @@ for(int i = 0; i < arr.Length; i++)
             {
                 j++;
             }
-            while(j<k && arr[k] == arr[k + 1])
+            while(j>=0 && arr[k] == arr[k + 1])
             {
                 k--;
             }
