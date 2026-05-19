@@ -16,20 +16,20 @@ int answer = 0;
 
 for (int i = 0; i < arr.Length - 2; i++)
 {
-    int j = i + 1;
-    int k = arr.Length - 1;
+    int left = i + 1;
+    int right = arr.Length - 1;
     int sum = target - arr[i];
     while (j < k)
     {
-        int currentSum = arr[j] + arr[k];
+        int currentSum = arr[left] + arr[right];
         if (currentSum < sum)
         {
-            answer = answer + (k - j);
-            j++;
+            answer = answer + (right - left);
+            left++;
         }
         else
         {
-            k--;   
+            right--;   
         }
         
     }
